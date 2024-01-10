@@ -1,0 +1,36 @@
+main{
+  display: flex;
+  height: 100%;
+  background: url("/assets/img/background.png") no-repeat;
+  background-size: cover;
+  padding: 3rem;
+  gap: 3rem;
+}
+
+app-players-list{
+  flex: 1;
+}
+
+app-football-pitch{
+  flex: 2;
+}
+
+/*
+  Стили ниже требуются для переопределения вида drag placeholder'a,
+  когда мы тянем элемент из списка или тянем в него.
+  Определить нужно тут потому что из-за инкапсуляции стилей
+  при перетягивании элемента с поля в список стили, определённые в
+  players-list, не будут работать.
+ */
+
+:host::ng-deep app-players-list .cdk-drag-placeholder{
+  min-height: 104px;
+  max-height: 104px;
+  background: #eeecf1;
+  border-radius: 0.5rem;
+  border:1px dashed lightgray;
+}
+
+:host::ng-deep app-players-list .cdk-drag-placeholder > *{
+  display: none;
+}

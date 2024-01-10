@@ -1,0 +1,80 @@
+.pitch{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-image: url("/assets/img/pitch-half.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.675rem;
+}
+
+.pitch-players-line{
+  display: flex;
+  justify-content: space-around;
+  height: 11rem;
+}
+
+.pitch-players-line:first-child{
+  margin-top: 2rem;
+}
+
+.pitch-players-line:last-child{
+  margin-bottom: 2rem;
+}
+
+.pitch-player-position{
+  border-radius: 0.5rem;
+  width: 10rem;
+  border: 1px dashed white;
+  background: rgba(236, 236, 236, 0.2);
+  transition: transform 250ms;
+}
+
+.has-player{
+  border: none;
+}
+
+.player-card{
+  height: 100%;
+  border-radius: 0.5rem;
+  background: white;
+  border: 1px solid white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.img-wrapper{
+  display: flex;
+  height: 7rem;
+  overflow: hidden;
+}
+
+.img-wrapper img{
+  object-position: top center;
+  object-fit: cover;
+  aspect-ratio: 10/7;
+  max-width: 100%;
+}
+
+.player-info{
+  border-top: 1px solid lightgray;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+}
+
+.player-fullname{
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+}
+
+.cdk-drop-list-dragging{
+  transform: scale(1.06);
+}
+
+

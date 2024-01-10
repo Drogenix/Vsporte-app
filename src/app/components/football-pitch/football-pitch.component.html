@@ -1,0 +1,25 @@
+<div class="pitch">
+  <div class="pitch-players-line" *ngFor="let line of pitchLines">
+    <div class="pitch-player-position"
+         [class.has-player]="position.player"
+         *ngFor="let position of line.positions"
+         cdkDropList
+         [cdkDropListData]="position"
+         [cdkDropListSortingDisabled]="true"
+         (cdkDropListDropped)="onPlayerDrop($event, position)"
+         >
+        <div class="player-card"
+             *ngIf="position.player"
+             cdkDrag
+             [cdkDragDisabled]="!position.player">
+          <div class="img-wrapper">
+            <img alt="Изображение игрока" [src]="position.player.imageUrl">
+          </div>
+          <div class="player-info">
+            <p class="player-fullname">{{position.player.firstName + " " + position.player.lastName}}</p>
+            <p class="player-number">#{{position.player.number}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

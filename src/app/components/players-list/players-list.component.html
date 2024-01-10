@@ -1,0 +1,34 @@
+<div class="players-list">
+  <header>
+    <p>Состав команды</p>
+  </header>
+  <ul cdkDropList
+      cdkDropListSortingDisabled="true"
+      [cdkDropListData]="players"
+      (cdkDropListDropped)="onPlayerDrop($event)">
+
+    <li cdkDrag *ngFor="let player of players">
+      <div class="player">
+        <div class="player-main-info">
+          <div class="img-wrapper">
+            <img alt="Изображение игрока" [src]="player.imageUrl">
+          </div>
+          <p class="player-fullname">{{player.firstName + " " + player.lastName}}</p>
+        </div>
+        <div class="player-right-block">
+          <p class="player-number-label">Номер</p>
+          <p class="player-number">{{player.number}}</p>
+        </div>
+      </div>
+
+      <div *cdkDragPreview class="player-drag-preview">
+        <div class="img-wrapper">
+          <img alt="Изображение игрока" [src]="player.imageUrl">
+        </div>
+        <p>{{player.firstName + " " + player.lastName}}</p>
+      </div>
+
+      <div *cdkDragPlaceholder class="player-drag-placeholder"></div>
+    </li>
+  </ul>
+</div>
