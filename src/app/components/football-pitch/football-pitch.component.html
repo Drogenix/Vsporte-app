@@ -16,10 +16,32 @@
             <img alt="Изображение игрока" [src]="position.player.imageUrl">
           </div>
           <div class="player-info">
-            <p class="player-fullname">{{position.player.firstName + " " + position.player.lastName}}</p>
+            <p class="player-fullname">{{position.player | fullname}}</p>
             <p class="player-number">#{{position.player.number}}</p>
           </div>
         </div>
+    </div>
+  </div>
+  <div class="pitch-players-line">
+    <div class="pitch-player-position"
+         [class.has-player]="goalkeeperPosition.player"
+         cdkDropList
+         [cdkDropListData]="goalkeeperPosition"
+         [cdkDropListSortingDisabled]="true"
+         (cdkDropListDropped)="onPlayerDrop($event, goalkeeperPosition)"
+    >
+      <div class="player-card"
+           *ngIf="goalkeeperPosition.player"
+           cdkDrag
+           [cdkDragDisabled]="!goalkeeperPosition.player">
+        <div class="img-wrapper">
+          <img alt="Изображение игрока" [src]="goalkeeperPosition.player.imageUrl">
+        </div>
+        <div class="player-info">
+          <p class="player-fullname">{{goalkeeperPosition.player | fullname}}</p>
+          <p class="player-number">#{{goalkeeperPosition.player.number}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

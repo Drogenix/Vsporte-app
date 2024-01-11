@@ -3,6 +3,8 @@ import {CdkDrag, CdkDragDrop, CdkDropList} from "@angular/cdk/drag-drop";
 import {NgForOf, NgIf} from "@angular/common";
 import {PitchLine} from "../../core/entity/pitch-line";
 import {PitchPlayerPosition} from "../../core/entity/pitch-player-position";
+import {Player} from "../../core/entity/player";
+import {FullnamePipe} from "../../core/pipes/fullname.pipe";
 
 @Component({
   selector: 'app-football-pitch',
@@ -11,7 +13,8 @@ import {PitchPlayerPosition} from "../../core/entity/pitch-player-position";
     CdkDropList,
     NgForOf,
     NgIf,
-    CdkDrag
+    CdkDrag,
+    FullnamePipe
   ],
   templateUrl: './football-pitch.component.html',
   styleUrl: './football-pitch.component.css',
@@ -23,56 +26,61 @@ export class FootballPitchComponent {
     {
       positions:[
         {
-          index:0
+          player:null
         },
         {
-          index:1
+          player:null
         },
         {
-          index:2
+          player:null
         }
       ]
     },
     {
       positions:[
         {
-          index:3
+          player:null
         },
         {
-          index:4
+          player:null
         },
         {
-          index:5
+          player:null
+        },
+        {
+          player:null
         }
       ]
     },
     {
       positions:[
         {
-          index:6
+          player:null
         },
         {
-          index:7
+          player:null
         },
         {
-          index:8
-        },
-        {
-          index:9
-        }
-      ]
-    },
-    {
-      positions:[
-        {
-          index:10
+          player:null
         }
       ]
     }
   ]
 
+  readonly goalkeeperLine:PitchLine = {
+    positions:[
+      {
+        player:null
+      }
+    ]
+  }
+
+  get goalkeeperPosition():PitchPlayerPosition{
+    return this.goalkeeperLine.positions[0];
+  }
+
   onPlayerDrop(event: CdkDragDrop<any>, position:PitchPlayerPosition){
-    const playerSourceData = event.previousContainer.data;
+    const playerSourceData:Player[] | PitchPlayerPosition = event.previousContainer.data;
 
     if(Array.isArray(playerSourceData)){
       const droppedItemIndex = event.previousIndex;
@@ -91,7 +99,7 @@ export class FootballPitchComponent {
       if(!position.player){
         position.player = droppedPlayer;
 
-        playerSourceData.player = undefined;
+        playerSourceData.player = null;
       }
 
       if(position.player === droppedPlayer) return;
@@ -107,4 +115,6 @@ export class FootballPitchComponent {
     currentPosition.player = newPlayer;
     newPosition.player = currentPlayer;
   }
+
+
 }

@@ -3,6 +3,7 @@ import {Player} from "../../core/entity/player";
 import {NgForOf} from "@angular/common";
 import {CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDragPreview, CdkDropList} from "@angular/cdk/drag-drop";
 import {PitchPlayerPosition} from "../../core/entity/pitch-player-position";
+import {FullnamePipe} from "../../core/pipes/fullname.pipe";
 
 @Component({
   selector: 'app-players-list',
@@ -12,7 +13,8 @@ import {PitchPlayerPosition} from "../../core/entity/pitch-player-position";
     CdkDrag,
     CdkDropList,
     CdkDragPreview,
-    CdkDragPlaceholder
+    CdkDragPlaceholder,
+    FullnamePipe
   ],
   templateUrl: './players-list.component.html',
   styleUrl: './players-list.component.css',
@@ -106,6 +108,7 @@ export class PlayersListComponent {
       lastName: "Кройф"
     }
   ]
+
   constructor() {}
 
   onPlayerDrop(event:CdkDragDrop<any>){
@@ -116,7 +119,7 @@ export class PlayersListComponent {
     if(pitchPlayerPosition.player){
       playersList.splice(event.currentIndex, 0, pitchPlayerPosition.player);
 
-      pitchPlayerPosition.player = undefined;
+      pitchPlayerPosition.player = null;
     }
   }
 }
