@@ -1,27 +1,13 @@
-# Testovoe
+# Vsporte App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+![Vsporte App](src/assets/github/preview.png "Vsporte App")
 
-## Development server
+# Angular
+Используемая версия - Angular v17.01
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Инструкция для пользователя
+Функции приложения основаны на использовании Drag and Drop, или же перетягивания элементов.
+- Чтобы разместить игрока на поле, перетяните его из списка на нужную позицию.
+- Чтобы заменить игрока на поле игроком из списка, перетяните игрока из списка в область игрока, которого хотите заменить.
+- Чтобы убрать игрока с поля, перетяние его в список игроков.
+- Для смены позиций игроков на поле просто перетягивайте их в нужную область. Игроки изменят позиции автоматически.
