@@ -111,13 +111,12 @@ ul{
 }
 
 .player-fullname{
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
   font-weight: bold;
 }
 
 .player-drag-preview{
-  height: 12rem;
+  height: 11rem;
   width: 10rem;
   background: white;
   border: 1px solid lightgray;
@@ -126,7 +125,7 @@ ul{
 }
 
 .player-drag-preview .img-wrapper{
-  height: 10rem;
+  height: 7rem;
   width: 100%;
   overflow: hidden;
 }
@@ -134,13 +133,24 @@ ul{
 .player-drag-preview img{
   object-fit: cover;
   object-position: top;
-  aspect-ratio: 1/1;
+  aspect-ratio: 10/7;
   max-width: 100%;
 }
 
 .player-drag-preview p{
-  margin-top: 0.25rem;
+  font-size: 0.875rem;
   text-align: center;
+}
+
+.player-drag-preview .player-info{
+  padding: 0.5rem;
+}
+
+.player-drag-preview .player-fullname{
+  font-weight: bold;
+  overflow: auto;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
 
 
