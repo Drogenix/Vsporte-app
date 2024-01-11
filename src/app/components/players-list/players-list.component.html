@@ -2,7 +2,9 @@
   <header>
     <p>Состав команды</p>
   </header>
-  <ul cdkDropList
+  <ul
+      @listFadeIn
+      cdkDropList
       cdkDropListSortingDisabled="true"
       [cdkDropListData]="players"
       (cdkDropListDropped)="onPlayerDrop($event)"

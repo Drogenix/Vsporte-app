@@ -4,6 +4,7 @@ import {NgForOf} from "@angular/common";
 import {CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDragPreview, CdkDropList} from "@angular/cdk/drag-drop";
 import {PitchPlayerPosition} from "../../core/entity/pitch-player-position";
 import {FullnamePipe} from "../../core/pipes/fullname.pipe";
+import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-players-list',
@@ -15,6 +16,24 @@ import {FullnamePipe} from "../../core/pipes/fullname.pipe";
     CdkDragPreview,
     CdkDragPlaceholder,
     FullnamePipe
+  ],
+  animations:[
+    trigger("listFadeIn",[
+      transition("* => *", [
+        query(":enter",[
+          style({
+            opacity:0,
+            transform:"scale(0)"
+          }),
+          stagger(75, [
+            animate("450ms ease-in", style({
+              opacity:1,
+              transform:"scale(1)"
+            }))
+          ])
+        ])
+      ])
+    ])
   ],
   templateUrl: './players-list.component.html',
   styleUrl: './players-list.component.css',
