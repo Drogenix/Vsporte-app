@@ -41,7 +41,7 @@ header{
 header p {
   color: white;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
 }
 
@@ -154,6 +154,40 @@ ul{
   overflow: auto;
   text-overflow: ellipsis;
   word-break: break-all;
+}
+
+/* Spinner */
+.spinner-container{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.spinner-container p{
+  margin-top: 0.75rem;
+}
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 5px solid var(--clr-primary);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 

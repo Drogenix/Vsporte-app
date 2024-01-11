@@ -2,38 +2,47 @@
   <header>
     <p>Состав команды</p>
   </header>
-  <ul
+  <ng-container *ngIf="players$ | async as players; else loading">
+    <ul
       @listFadeIn
       cdkDropList
       cdkDropListSortingDisabled="true"
       [cdkDropListData]="players"
       (cdkDropListDropped)="onPlayerDrop($event)"
-  >
-    <li cdkDrag *ngFor="let player of players">
-      <div class="player">
-        <div class="player-main-info">
+    >
+      <li cdkDrag *ngFor="let player of players">
+        <div class="player">
+          <div class="player-main-info">
+            <div class="img-wrapper">
+              <img alt="Изображение игрока" [src]="player.imageUrl">
+            </div>
+            <p class="player-fullname">{{player | fullname}}</p>
+          </div>
+          <div class="player-right-block">
+            <p class="player-number-label">Номер</p>
+            <p class="player-number">{{player.number}}</p>
+          </div>
+        </div>
+
+        <div *cdkDragPreview class="player-drag-preview">
           <div class="img-wrapper">
             <img alt="Изображение игрока" [src]="player.imageUrl">
           </div>
-          <p class="player-fullname">{{player | fullname}}</p>
+          <div class="player-info">
+            <p class="player-fullname">{{player | fullname}}</p>
+            <p class="player-number">#{{player.number}}</p>
+          </div>
         </div>
-        <div class="player-right-block">
-          <p class="player-number-label">Номер</p>
-          <p class="player-number">{{player.number}}</p>
-        </div>
-      </div>
 
-      <div *cdkDragPreview class="player-drag-preview">
-        <div class="img-wrapper">
-          <img alt="Изображение игрока" [src]="player.imageUrl">
-        </div>
-        <div class="player-info">
-          <p class="player-fullname">{{player | fullname}}</p>
-          <p class="player-number">#{{player.number}}</p>
-        </div>
-      </div>
+        <div *cdkDragPlaceholder class="player-drag-placeholder"></div>
+      </li>
+    </ul>
+  </ng-container>
 
-      <div *cdkDragPlaceholder class="player-drag-placeholder"></div>
-    </li>
-  </ul>
+  <ng-template #loading>
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p>Загрузка игроков</p>
+    </div>
+  </ng-template>
 </div>
