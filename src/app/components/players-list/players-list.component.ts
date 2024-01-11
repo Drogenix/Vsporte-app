@@ -23,10 +23,10 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
         query(":enter",[
           style({
             opacity:0,
-            transform:"scale(0)"
+            transform:"scale(0.4)"
           }),
           stagger(75, [
-            animate("450ms ease-in", style({
+            animate("300ms ease-in", style({
               opacity:1,
               transform:"scale(1)"
             }))
