@@ -104,15 +104,14 @@ export class FootballPitchComponent {
 
       if(position.player === droppedPlayer) return;
 
-      this.reversePlayersPosition(position, playerSourceData as PitchPlayerPosition)
+      this.swapPlayersPosition(position, playerSourceData as PitchPlayerPosition)
     }
   }
 
-  private reversePlayersPosition(currentPosition:PitchPlayerPosition, newPosition:PitchPlayerPosition){
+  private swapPlayersPosition(currentPosition:PitchPlayerPosition, newPosition:PitchPlayerPosition){
     const currentPlayer = currentPosition.player;
-    const newPlayer = newPosition.player;
 
-    currentPosition.player = newPlayer;
+    currentPosition.player = newPosition.player;
     newPosition.player = currentPlayer;
   }
 
