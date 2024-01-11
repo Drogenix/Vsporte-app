@@ -32,7 +32,7 @@
 
 header{
   padding: 1rem;
-  background: #8879dc;
+  background: var(--clr-primary);
 }
 
 header p {
@@ -72,7 +72,7 @@ ul{
   align-items: center;
   justify-content: center;
   min-width: 8rem;
-  background: #8879dc;
+  background: var(--clr-primary);
   color: white;
 }
 
