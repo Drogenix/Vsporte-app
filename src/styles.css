@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
   --clr-primary: #433498;
+  --card-shadow: 0 0 6px #9f9f9f;
+  --card-radius: 0.5rem;
 }
 
 body, html{
@@ -28,8 +30,4 @@ ul{
 
 p{
   margin: 0;
-}
-
-.pitch-player-position .cdk-drag-placeholder{
-  display: none;
 }

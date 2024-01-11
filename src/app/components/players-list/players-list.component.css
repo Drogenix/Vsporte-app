@@ -1,8 +1,12 @@
+:host{
+  --radius-1: 0.675rem;
+}
+
 .players-list{
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-radius: 0.675rem;
+  border-radius: var(--radius-1);
   overflow: hidden;
 }
 
@@ -26,7 +30,6 @@
 }
 
 .players-list ul::-webkit-scrollbar-thumb:hover{
-  border-radius: 0.5rem;
   background: #b6aff1;
 }
 
@@ -55,7 +58,7 @@ ul{
   display: flex;
   justify-content: space-between;
   background: white;
-  border-radius: 0.675rem;
+  border-radius: var(--radius-1);
   box-shadow: 0 2px 8px lightgray;
   overflow: hidden;
   cursor: pointer;
@@ -93,7 +96,7 @@ ul{
 }
 
 .player .img-wrapper{
-  border-radius: 4px;
+  border-radius: 0.25rem;
   max-width: 5rem;
   max-height: 5rem;
   height: 100%;
@@ -119,8 +122,8 @@ ul{
   height: 11rem;
   width: 10rem;
   background: white;
-  border: 1px solid lightgray;
-  border-radius: 0.5rem;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
 }
 

@@ -34,3 +34,7 @@ app-football-pitch{
 :host::ng-deep app-players-list .cdk-drag-placeholder > *{
   display: none;
 }
+
+:host::ng-deep .pitch-player-position .cdk-drag-placeholder{
+  display: none;
+}
