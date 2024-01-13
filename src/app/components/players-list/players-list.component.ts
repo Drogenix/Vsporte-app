@@ -52,14 +52,20 @@ export class PlayersListComponent {
   constructor() {}
 
   onPlayerDrop(event:CdkDragDrop<any>){
+    if(this.isPlayerFromList(event)) return;
+
     const pitchPlayerPosition:PitchPlayerPosition = event.previousContainer.data;
+
+    const droppedPlayer = pitchPlayerPosition.player as Player;
 
     const playersList:Player[] = event.container.data;
 
-    if(pitchPlayerPosition.player){
-      playersList.splice(event.currentIndex, 0, pitchPlayerPosition.player);
+    playersList.splice(event.currentIndex, 0, droppedPlayer);
 
-      pitchPlayerPosition.player = null;
-    }
+    pitchPlayerPosition.player = null;
+  }
+
+  private isPlayerFromList(event:CdkDragDrop<any>):boolean{
+    return event.previousContainer === event.container;
   }
 }
