@@ -1,12 +1,17 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {Player} from "../../core/entity/player";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
-import {CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDragPreview, CdkDropList} from "@angular/cdk/drag-drop";
-import {PitchPlayerPosition} from "../../core/entity/pitch-player-position";
-import {FullnamePipe} from "../../core/pipes/fullname.pipe";
-import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
-import {PlayersService} from "../../core/services/players.service";
-import {Observable} from "rxjs";
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDragPlaceholder,
+  CdkDragPreview,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
+import { PitchPlayerPosition, Player } from '../../core/entity';
+import { FullnamePipe } from '../../core/pipes/fullname.pipe';
+import { PlayersService } from '../../core/services/players.service';
+import { Observable } from 'rxjs';
+import { listFadeInAnimation } from '../../core/animations/list-fade-in.animation';
 
 @Component({
   selector: 'app-players-list',
@@ -19,53 +24,38 @@ import {Observable} from "rxjs";
     CdkDragPlaceholder,
     FullnamePipe,
     NgIf,
-    AsyncPipe
+    AsyncPipe,
   ],
-  animations:[
-    trigger("listFadeIn",[
-      transition("* => *", [
-        query(":enter",[
-          style({
-            opacity:0,
-            transform:"scale(0.4)"
-          }),
-          stagger(75, [
-            animate("300ms ease-in", style({
-              opacity:1,
-              transform:"scale(1)"
-            }))
-          ])
-        ])
-      ])
-    ])
-  ],
+  animations: [listFadeInAnimation],
   templateUrl: './players-list.component.html',
   styleUrl: './players-list.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayersListComponent {
+  private playersService = inject(PlayersService);
 
-  playersService = inject(PlayersService);
-
-  readonly players$:Observable<Player[]> = this.playersService.getAll();
+  public readonly players$: Observable<Player[]> = this.playersService.getAll();
 
   constructor() {}
 
-  onPlayerDrop(event:CdkDragDrop<any>){
-    if(this.isPlayerFromList(event)) return;
+  public onPlayerDrop(event: CdkDragDrop<any>) {
+    if (this.isPlayerFromList(event)) return;
 
-    const pitchPlayerPosition:PitchPlayerPosition = event.previousContainer.data;
+    const pitchPlayerPosition: PitchPlayerPosition =
+      event.previousContainer.data;
 
-    const droppedPlayer = pitchPlayerPosition.player as Player;
+    const droppedPlayer = pitchPlayerPosition.player;
 
-    const playersList:Player[] = event.container.data;
+    if(droppedPlayer){
+      const playersList: Player[] = event.container.data;
 
-    playersList.splice(event.currentIndex, 0, droppedPlayer);
+      playersList.splice(event.currentIndex, 0, droppedPlayer);
 
-    pitchPlayerPosition.player = null;
+      pitchPlayerPosition.player = null;
+    }
   }
 
-  private isPlayerFromList(event:CdkDragDrop<any>):boolean{
+  private isPlayerFromList(event: CdkDragDrop<any>): boolean {
     return event.previousContainer === event.container;
   }
 }

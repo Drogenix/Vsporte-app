@@ -14,23 +14,23 @@
         <div class="player">
           <div class="player-main-info">
             <div class="img-wrapper">
-              <img alt="Изображение игрока" [src]="player.imageUrl">
+              <img alt="Изображение игрока" [src]="player.imageUrl" />
             </div>
-            <p class="player-fullname">{{player | fullname}}</p>
+            <p class="player-fullname">{{ player | fullname }}</p>
           </div>
           <div class="player-right-block">
             <p class="player-number-label">Номер</p>
-            <p class="player-number">{{player.number}}</p>
+            <p class="player-number">{{ player.number }}</p>
           </div>
         </div>
 
         <div *cdkDragPreview class="player-drag-preview">
           <div class="img-wrapper">
-            <img alt="Изображение игрока" [src]="player.imageUrl">
+            <img alt="Изображение игрока" [src]="player.imageUrl" />
           </div>
           <div class="player-info">
-            <p class="player-fullname">{{player | fullname}}</p>
-            <p class="player-number">#{{player.number}}</p>
+            <p class="player-fullname">{{ player | fullname }}</p>
+            <p class="player-number">#{{ player.number }}</p>
           </div>
         </div>
 
